@@ -1,13 +1,16 @@
 #include <stdio.h>
+#include<conio.h>
+#include<stdlib.h>
 
 #define true 1
 #define false 0
 #define tamNome 20
 
-main()
+main(void)
 {
     // Variavel para encerrar o programa
-    int exit = 1, opcao;
+    int exit = 1;
+    int opcao;
 
     // Variavel nome do Aluno
     char nome[tamNome];
@@ -17,7 +20,7 @@ main()
     int nota1, nota2;
     float media = 0;
 
-    while(exit != false)
+    while(opcao != 0)
     {
         printf("Escola\n\n");
 
@@ -32,5 +35,42 @@ main()
 
         printf("Opcao: ");
         scanf("%d", &opcao);
+
+        switch(opcao)
+        {
+            case 1:
+
+            break;
+
+            case 2:
+
+            break;
+
+            case 3:
+
+            break;
+
+            case 4:
+
+            break;
+
+            case 5:
+
+            break;
+
+            case 6:
+
+            case 0:
+                printf("\n\nEncerrando sistema Escolar!\n\n");
+                opcao = 0;
+            break;
+
+            default:
+                fflush(stdin);
+                printf("\nOpcao invalida, digite outra novamente por favor!\n\n");
+            break;
+        }
+        getch();
+        system ("cls");
     }
 }
