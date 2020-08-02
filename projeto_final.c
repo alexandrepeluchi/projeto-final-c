@@ -30,7 +30,7 @@ int main()
     while(opcao != 0)
     {
         puts("");
-        printf("----- Escola -----\n\n");
+        printf("---------------- Escola ----------------\n\n");
 
         printf(" Escolha uma opcao: \n\n");
         printf(" [1] Cadastrar Aluno \n");
@@ -48,13 +48,13 @@ int main()
         switch(opcao)
         {
             case 1:
-                printf("\n--------------------------------------\n");
+                printf("\n----------------------------------------\n");
                 printf("\n Digite o nome do Aluno: ");
                 scanf("%s", &nome);
                 fprintf(arquivo, "%s\n", nome);
-                printf("\n Aluno cadastrado com sucesso.\n");
-                printf("\n          [ ENTER ]");
-                printf("\n\n--------------------------------------\n");
+                printf("\n      Aluno cadastrado com sucesso      \n");
+                printf("\n               [ ENTER ]               ");
+                printf("\n\n----------------------------------------\n");
             break;
 
             case 2:
@@ -76,13 +76,18 @@ int main()
             case 6:
 
             case 0:
-                printf("\n\nEncerrando sistema Escolar!\n\n");
+                printf("\n----------------------------------------\n");
+                printf("\n      Encerrando sistema Escolar!       \n\n");
+                printf("\n              Volte sempre!              ");
+                printf("\n\n----------------------------------------\n");
                 opcao = 0;
             break;
 
             default:
-                fflush(stdin);
-                printf("\nOpcao invalida, digite outra novamente por favor!\n\n");
+                printf("\n----------------------------------------\n");
+                printf("\n Opcao invalida, digite outra novamente!\n");
+                printf("\n               [ ENTER ]               ");
+                printf("\n\n----------------------------------------\n");
             break;
         }
         getch();
