@@ -5,29 +5,26 @@
 
 #define true 1
 #define false 0
-#define tamNome 20
+#define tam 30
 
 int main()
 {
-    FILE *arquivo = fopen("escola.txt", "a");
-    if(arquivo == NULL){
-        printf("Erro ao abrir o arquivo\n");
-        exit(0);
-    }
+    FILE *arquivo;
 
     // Variavel para controlar o programa
-    int exit = 1;
-    int opcao;
+    int exit = 1, aux = 0;
+    char opcao;
 
     // Variavel nome do Aluno
-    char nome[tamNome];
+    char nome[tam], buscaAluno[tam];
+    nome[0] = '\0', buscaAluno[0] = '\0';
 
     // Variaveis de notas do Aluno
     int quantidadeDeNotas = 0;
     int nota1, nota2;
     float media = 0;
 
-    while(opcao != 0)
+    while(opcao != 9)
     {
         puts("");
         printf("---------------- Escola ----------------\n\n");
@@ -41,41 +38,68 @@ int main()
         printf(" [6] Gerar Relatorio \n\n");
         printf(" [0] Sair do sistema \n\n");
 
-        fflush(stdin);
         printf(" Opcao: ");
-        scanf("%d", &opcao);
+        opcao = getche();
 
         switch(opcao)
         {
-            case 1:
-                printf("\n----------------------------------------\n");
-                printf("\n Digite o nome do Aluno: ");
+            case '1':
+                printf("\n\n----------------------------------------\n");
+
+                arquivo = fopen("escola.txt", "a+");
+
+                printf("\n     Digite o nome do Aluno: ");
                 scanf("%s", &nome);
+
                 fprintf(arquivo, "%s\n", nome);
+
                 printf("\n      Aluno cadastrado com sucesso      \n");
                 printf("\n               [ ENTER ]               ");
                 printf("\n\n----------------------------------------\n");
+                nome[0] = '\0';
+
+                fclose(arquivo);
             break;
 
-            case 2:
+            case '2':
+                aux = 0;
+                printf("\n\n----------------------------------------\n");
+
+                arquivo = fopen("escola.txt", "r");
+
+                printf("\n     Digite o nome do Aluno: ");
+                scanf("%s", &nome);
+
+                while( (fscanf(arquivo, "%s\0", buscaAluno)) != EOF ){
+                    if (strcmp(buscaAluno, nome) == 0){
+                        printf("\n            Aluno encontrado!           \n");
+                        aux++;
+                    }
+                }
+                if (aux == 0) {
+                    printf("\n          Aluno nao encontrado!         \n");
+                }
+                printf("\n----------------------------------------\n");
+                nome[0] = '\0'; buscaAluno[0] = '\0';
+
+                fclose(arquivo);
+            break;
+
+            case '3':
 
             break;
 
-            case 3:
+            case '4':
 
             break;
 
-            case 4:
+            case '5':
 
             break;
 
-            case 5:
+            case '6':
 
-            break;
-
-            case 6:
-
-            case 0:
+            case '0':
                 printf("\n----------------------------------------\n");
                 printf("\n      Encerrando sistema Escolar!       \n\n");
                 printf("\n              Volte sempre!              ");
@@ -93,6 +117,5 @@ int main()
         getch();
         system ("cls");
     }
-    fclose(arquivo);
     return 0;
 }
